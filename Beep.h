@@ -24,6 +24,11 @@
 #ifndef Beep_h
 #define Beep_h
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 #if defined(_WIN32) || defined(_CYGWIN_)
 /* On Windows use the built-in Beep() function from  <windows.h>*/
 #include <synchapi.h> //Sleep()
@@ -169,5 +174,9 @@ int Beep(int freq, int ms) {
 #endif
 
 #define _beep Beep
+
+#ifdef __cplusplus
+}
+#endif //__cplusplus
 
 #endif /* Beep_h */
