@@ -12,7 +12,7 @@ All it does is beeping at the given frequency for the given duration of time.
 The API is the following:
 
 ```c
-int beep(int frequency, int duration);
+int Beep(int frequency, int duration);
 ```
 
 Frequency is in Hz, duration is in milliseconds. To convert note index into a frequency use the following formula: 
@@ -41,5 +41,5 @@ make
 - It may need libasound2-dev or alsa-lib package for Linux.
 
 # Warnings
-- Functions are defined in the headers which may lead to ODR violations 
+- Functions are defined in the header file which may lead to ODR violations 
 - Sound may be "choppy", it is recommended to use low volumes
