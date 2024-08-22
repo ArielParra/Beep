@@ -170,7 +170,7 @@ int Beep(int freq, int ms) {
 #include <unistd.h> //usleep()
 
 #ifndef Sleep
-  void Sleep(int ms) { usleep(ms * 1000); }
+  #define Sleep(ms) usleep((ms) * 1000)
 #endif
 
 #define _beep Beep

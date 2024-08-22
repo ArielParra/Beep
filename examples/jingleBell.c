@@ -1,8 +1,7 @@
+#include "Beep.h"
 // code from: https://www.geeksforgeeks.org/beep-function-in-c-with-examples
 // C program to play song Jingle Bell
 // using the BEEP() function
-
-#include "Beep.h"
 
 // Driver Code
 int main()

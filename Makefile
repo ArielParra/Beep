@@ -1,13 +1,11 @@
 ifdef OS  #Windows OS Detection
 	CC := gcc.exe
 	FLAGS := -lwinmm
-	RM := del /Q
 	FixPath = $(subst /,\,$1)
 	UNAME := Windows
 	EXT := .exe
 else  	  #*NIX using GNU make
 	CC := gcc
-	RM := rm -f 
 	FixPath = $1
 	UNAME = $(shell uname)
 	EXT :=
@@ -20,23 +18,48 @@ else  	  #*NIX using GNU make
 endif
 
 CFLAGS := -O2 -s -w
+INCLUDES := -I./ 
+OUTDIR := out/
 
-Name1 := beep_utility-$(UNAME)
-Name2 := beep_mario-$(UNAME)
-Name3 := beep_jingleBell-$(UNAME)
+ex0 := beep
+ex1 := astronomia
+ex2 := despacito
+ex3 := imperial
+ex4 := jingleBell
+ex5 := mario_intro
+ex6 := star_wars
+ex7 := zelda_SOT
 
-all: $(Name1) $(Name2) $(Name3)
+all: $(OUTDIR) $(ex0) $(ex1) $(ex2) $(ex3) $(ex4) $(ex5) $(ex6) $(ex7)
 
-$(Name1): beep.c Beep.h
-	$(CC) -o $(call FixPath,$(Name1)) $< $(FLAGS) $(CFLAGS)
+$(OUTDIR):
+	mkdir $(OUTDIR)
 
-$(Name2): beep_mario.c Beep.h
-	$(CC) -o $(call FixPath,$(Name2)) $< $(FLAGS) $(CFLAGS)
+$(ex0): $(ex0).c Beep.h
+	$(CC) -o $(call FixPath,$(OUTDIR)$(ex0)) $< $(FLAGS) $(CFLAGS) $(INCLUDES)
 
-$(Name3): beep_jingleBell.c Beep.h
-	$(CC) -o $(call FixPath,$(Name3)) $< $(FLAGS) $(CFLAGS)
+$(ex1): examples/$(ex1).c Beep.h Notes.h
+	$(CC) -o $(call FixPath,$(OUTDIR)$(ex1)) $< $(FLAGS) $(CFLAGS) $(INCLUDES)
+
+$(ex2): examples/$(ex2).c Beep.h Notes.h
+	$(CC) -o $(call FixPath,$(OUTDIR)$(ex2)) $< $(FLAGS) $(CFLAGS) $(INCLUDES)
+
+$(ex3): examples/$(ex3).c Beep.h
+	$(CC) -o $(call FixPath,$(OUTDIR)$(ex3)) $< $(FLAGS) $(CFLAGS) $(INCLUDES)
+
+$(ex4): examples/$(ex4).c Beep.h
+	$(CC) -o $(call FixPath,$(OUTDIR)$(ex4)) $< $(FLAGS) $(CFLAGS) $(INCLUDES)
+
+$(ex5): examples/$(ex5).c Beep.h
+	$(CC) -o $(call FixPath,$(OUTDIR)$(ex5)) $< $(FLAGS) $(CFLAGS) $(INCLUDES)
+
+$(ex6): examples/$(ex6).c Beep.h
+	$(CC) -o $(call FixPath,$(OUTDIR)$(ex6)) $< $(FLAGS) $(CFLAGS) $(INCLUDES)
+
+$(ex7): examples/$(ex7).c Beep.h
+	$(CC) -o $(call FixPath,$(OUTDIR)$(ex7)) $< $(FLAGS) $(CFLAGS) $(INCLUDES)
 
 clean:
-	$(RM) $(call FixPath,$(Name1)$(EXT))
-	$(RM) $(call FixPath,$(Name2)$(EXT))
-	$(RM) $(call FixPath,$(Name3)$(EXT))
+	rm -f -r -d $(call FixPath,$(OUTDIR))
+
+.PHONY: all clean

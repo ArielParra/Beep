@@ -18,15 +18,16 @@ int Beep(int frequency, int duration);
 Frequency is in Hz, duration is in milliseconds. To convert note index into a frequency use the following formula: 
 `440 * pow(2, ((note - 49) / 12))`.
 
-There is a also a `beep.c` utility which shows how the API can be used.
+There is a `beep.c` utility which shows how the API can be used, I also included the `Sleep()` function based on `usleep()` used in many songs.
 
-I included beep_jingleBell and beep_mario code tunes to test the common use of Beep() and Sleep() functions. 
+There is also `Notes.h` header file which contains macros for each note.
+I included some example tunes in the `examples` folder,
 
 If you found an issue or would like to propose a feature - PRs are welcome as long as they are small and simple!
 
 Code is distributed under MIT license, feel free to use in commercial projects.
 
-# Instalation
+# Instructions to compile the examples
 
 ```bash
 git clone https://github.com/ArielParra/Beep.git
